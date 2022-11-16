@@ -1,13 +1,32 @@
+import { useState } from "react";
+
 function Categories() {
+  const categories = [
+    "Все",
+    "Мясные",
+    "Вегетарианская",
+    "Гриль",
+    "Острые",
+    "Закрытые",
+  ];
+  const [activeCategory, setActiveCategory] = useState(3);
+
+  const onClickCategory = (i) => {
+    setActiveCategory(i);
+  };
+
   return (
     <div className="categories">
       <ul>
-        <li className="active">Все</li>
-        <li>Мясные</li>
-        <li>Вегетарианская</li>
-        <li>Гриль</li>
-        <li>Острые</li>
-        <li>Закрытые</li>
+        {categories.map((item, i) => (
+          <li
+            key={i}
+            onClick={() => onClickCategory(i)} // создается анонимная функция, которая вызывает функцию onClickCategory() при клике
+            className={activeCategory === i ? "active" : ""}
+          >
+            {item}
+          </li>
+        ))}
       </ul>
     </div>
   );
