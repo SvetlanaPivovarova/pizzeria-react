@@ -1,13 +1,23 @@
-import logo from "./logo.svg";
+// import logo from "./logo.svg";
 import "./scss/app.scss";
-import pizzaItems from "./assets/items.json";
 
 import Header from "./components/Header";
 import Sort from "./components/Sort";
 import Categories from "./components/Categories";
 import PizzaItem from "./components/PizzaItem";
+import { useEffect, useState } from "react";
 
 function App() {
+  const [pizzaItems, setPizzaItems] = useState([]);
+
+  useEffect(() => {
+    fetch("https://6375e612b5f0e1eb85fc74a8.mockapi.io/api/items")
+      .then((res) => res.json())
+      .then((json) => {
+        setPizzaItems(json);
+      });
+  }, []);
+
   return (
     <div className="wrapper">
       <Header />
