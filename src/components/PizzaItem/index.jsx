@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function PizzaItem({ title, price, imageUrl, sizes, types }) {
+function PizzaItem({ name, price, imageUrl, sizes, types }) {
   const [activePizzaDough, setActivePizzaDough] = useState(0);
   const [activePizzaSize, setActivePizzaSize] = useState(0);
   const pizzaDough = ["тонкое", "традиционное"];
@@ -8,7 +8,7 @@ function PizzaItem({ title, price, imageUrl, sizes, types }) {
   return (
     <div className="pizza-block">
       <img className="pizza-block__image" src={imageUrl} alt="Pizza" />
-      <h4 className="pizza-block__title">{title}</h4>
+      <h4 className="pizza-block__title">{name}</h4>
       <div className="pizza-block__selector">
         <ul>
           {types.map((type) => (

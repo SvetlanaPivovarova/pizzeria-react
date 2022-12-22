@@ -4,8 +4,9 @@ import "./scss/app.scss";
 import Header from "./components/Header";
 import Sort from "./components/Sort";
 import Categories from "./components/Categories";
-import PizzaItem from "./components/PizzaItem";
 import { useEffect, useState } from "react";
+import PizzaItem from "./components/PizzaItem";
+import Sceleton from "./components/PizzaItem/Sceleton";
 
 function App() {
   const [pizzaItems, setPizzaItems] = useState([]);
@@ -30,7 +31,7 @@ function App() {
           <h2 className="content__title">Все пиццы</h2>
           <div className="content__items">
             {pizzaItems.map((obj) => (
-              <PizzaItem
+              <Sceleton
                 key={obj.id}
                 {...obj}
                 //title={obj.name}
